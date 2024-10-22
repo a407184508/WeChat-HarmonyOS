@@ -1,16 +1,21 @@
 @Entry
 @Component
-struct DiscoverPage {
+export struct DiscoverPage {
   @State message: string = 'Hello World'
 
   build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
+    List() {
+      ForEach(Array.from({length: 10}), () => {
+        ListItem() {
+          Row(){
+            Image($r('app.media.icon'))
+              .width(50)
+            Text("Name")
+            Blank()
+            Text("more")
+          }
+        }
+      })
     }
     .height('100%')
   }

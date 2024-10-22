@@ -1,17 +1,41 @@
 @Entry
 @Component
-struct HomePage {
-  @State message: string = 'Hello World'
+export struct HomePage {
+  @State message: string = 'HomePage'
 
   build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
+    List() {
+      ForEach(Array.from({ length: 20 }), () => {
+        ListItem() {
+          HomeItem()
+            .margin(10)
+        }
+      })
     }
     .height('100%')
+  }
+}
+
+@Component
+struct HomeItem {
+  build() {
+    Row() {
+      Image($r('app.media.icon'))
+        .width(50)
+
+      Column({ space: 15 }) {
+        Row() {
+          Text("Nickname")
+          Text("Time")
+        }
+        .justifyContent(FlexAlign.SpaceBetween)
+
+        Text("Message")
+      }
+      .alignItems(HorizontalAlign.Start)
+    }
+    .width('100%')
+    .padding(5)
+    .backgroundColor(Color.Red)
   }
 }

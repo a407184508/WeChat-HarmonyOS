@@ -1,17 +1,17 @@
 @Entry
 @Component
-struct MinePage {
+export struct MinePage {
   @State message: string = 'Hello World'
 
   build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
+    List() {
+      ListItem() {
+        Row() {
+          Image($r('app.media.icon'))
+            .width(50)
+          Text("name")
+        }
       }
-      .width('100%')
     }
-    .height('100%')
   }
 }

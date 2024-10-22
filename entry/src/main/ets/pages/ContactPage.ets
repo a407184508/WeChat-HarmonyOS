@@ -1,17 +1,19 @@
 @Entry
 @Component
-struct ContactPage {
+export struct ContactPage {
   @State message: string = 'Hello World'
 
   build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
+    List() {
+      ForEach(Array.from({length: 20}), () => {
+        ListItem() {
+          Row() {
+            Image($r('app.media.icon'))
+              .width(50)
+            Text("Nickname")
+          }
+        }
+      })
     }
-    .height('100%')
   }
 }
