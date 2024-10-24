@@ -6,3 +6,8 @@
 2. 安装模拟器 `Divice Manager` 
 
 ## 语法：
+类 JS+SwiftUI
+
+状态管理：
+1. @state 
+2. 接口和类oh

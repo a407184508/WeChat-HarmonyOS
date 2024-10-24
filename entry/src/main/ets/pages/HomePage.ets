@@ -4,15 +4,30 @@ export struct HomePage {
   @State message: string = 'HomePage'
 
   build() {
-    List() {
-      ForEach(Array.from({ length: 20 }), () => {
-        ListItem() {
-          HomeItem()
-            .margin(10)
-        }
-      })
+    Navigation() {
+
+      List() {
+
+        ForEach(Array.from({ length: 20 }), () => {
+          ListItem() {
+            HomeItem()
+              .margin(10)
+          }
+        })
+      }
+      .height('100%')
+
     }
-    .height('100%')
+    .navBarPosition(NavBarPosition.End)
+    .title('微信')
+    .titleMode(NavigationTitleMode.Free)
+    .menus([{
+      value: '添加',
+      action: () => {
+      }
+    }])
+
+    // .hideNavBar(true)
   }
 }
 
@@ -26,6 +41,7 @@ struct HomeItem {
       Column({ space: 15 }) {
         Row() {
           Text("Nickname")
+          Blank()
           Text("Time")
         }
         .justifyContent(FlexAlign.SpaceBetween)

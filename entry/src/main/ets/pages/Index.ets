@@ -10,7 +10,8 @@ struct Index {
   controller: TabsController = new TabsController()
 
   build() {
-    Tabs({ barPosition: BarPosition.End,
+    Tabs({
+      barPosition: BarPosition.End,
       index: 1,
       controller: this.controller
     }) {
