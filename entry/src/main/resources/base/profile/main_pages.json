@@ -5,6 +5,8 @@
     "pages/ContactPage",
     "pages/DiscoverPage",
     "pages/MinePage",
-    "pages/LoginPage"
+    "pages/LoginPage",
+    "pages/ChatPage",
+    "view/mine/CircleOfFriendsPage"
   ]
 }

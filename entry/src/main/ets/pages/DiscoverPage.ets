@@ -1,19 +1,26 @@
 @Entry
 @Component
-export struct DiscoverPage {
+export default struct DiscoverPage {
   @State message: string = 'Hello World'
 
   build() {
     List() {
-      ForEach(Array.from({length: 10}), () => {
+      ForEach(Array.from({ length: 10 }), () => {
         ListItem() {
-          Row(){
-            Image($r('app.media.icon'))
-              .width(50)
-            Text("Name")
-            Blank()
-            Text("more")
+          Column() {
+            Row() {
+              Image($r('app.media.wechat_icon'))
+                .width(50)
+                .border({ radius: 10 })
+              Text("Name")
+              Blank()
+              Text("more")
+            }
+            .width('100%')
+
+            Divider()
           }
+          .padding({ left: 10, right: 10 })
         }
       })
     }

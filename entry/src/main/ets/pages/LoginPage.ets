@@ -1,7 +1,8 @@
 import router from '@ohos.router'
+
 @Entry
 @Component
-struct LoginPage {
+export default struct LoginPage {
   @State message: string = 'Hello World'
 
   build() {
@@ -14,6 +15,7 @@ struct LoginPage {
       }
       .padding(10)
       .width('100%')
+
       Blank()
       Row({ space: 10 }) {
         Button('登录')
@@ -34,5 +36,6 @@ struct LoginPage {
     .height('100%')
     .backgroundImage($r("app.media.background"), ImageRepeat.NoRepeat)
     .backgroundImageSize(ImageSize.Cover)
+
   }
 }

@@ -1,33 +1,53 @@
+import axios, { AxiosError, AxiosResponse } from '@ohos/axios'
+
 @Entry
 @Component
-export struct HomePage {
+export default struct HomePage {
   @State message: string = 'HomePage'
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
+  navigationItem: NavigationMenuItem = {
+    value: "Top",
+    icon: "../../resources/base/media/ad_lookbook_finder_icon_dark_Normal",
+    action: () => {
+      console.log("click")
+    }
+  }
+
+  getData() {
+    axios
+      .get('https://api.github.com/users/octocat')
+      .then((response: AxiosResponse<string>) => {
+        console.log(response.data)
+      })
+      .catch((error: AxiosError) => {
+        console.log(error.name)
+      })
+  }
 
   build() {
-    Navigation() {
+    Navigation(this.pageInfos) {
 
       List() {
-
         ForEach(Array.from({ length: 20 }), () => {
           ListItem() {
-            HomeItem()
-              .margin(10)
+            Column() {
+              HomeItem()
+                .margin({ left: 10, right: 10 })
+                .onClick(() => {
+                  // this.pageInfos.pushPath('ChatPage', true)
+                })
+              Divider()
+                .margin({ left: 10, right: 10 })
+            }
           }
         })
       }
       .height('100%')
 
     }
-    .navBarPosition(NavBarPosition.End)
+    .mode(NavigationMode.Stack)
     .title('微信')
-    .titleMode(NavigationTitleMode.Free)
-    .menus([{
-      value: '添加',
-      action: () => {
-      }
-    }])
-
-    // .hideNavBar(true)
+    .menus([this.navigationItem, this.navigationItem, this.navigationItem])
   }
 }
 
@@ -35,20 +55,22 @@ export struct HomePage {
 struct HomeItem {
   build() {
     Row() {
-      Image($r('app.media.icon'))
+      Image($r('app.media.wechat_icon'))
         .width(50)
 
       Column({ space: 15 }) {
         Row() {
           Text("Nickname")
-          Blank()
           Text("Time")
         }
+        // .width('100%')
         .justifyContent(FlexAlign.SpaceBetween)
 
         Text("Message")
       }
       .alignItems(HorizontalAlign.Start)
+      .padding({ left: 10 })
+
     }
     .width('100%')
     .padding(5)

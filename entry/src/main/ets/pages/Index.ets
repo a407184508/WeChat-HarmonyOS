@@ -1,7 +1,7 @@
-import { ContactPage } from './ContactPage'
-import { DiscoverPage } from './DiscoverPage'
-import { HomePage } from './HomePage'
-import { MinePage } from './MinePage'
+import ContactPage from './ContactPage'
+import DiscoverPage from './DiscoverPage'
+import HomePage from './HomePage'
+import MinePage from './MinePage'
 
 @Entry
 @Component
